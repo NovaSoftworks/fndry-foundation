@@ -15,7 +15,7 @@ This is a configuration repository (not a reusable module) that defines a specif
 ## Prerequisites
 
 For the deployments to work, ensure that:
-- The [bootstrap layer](/NovaSoftworks/fndry-bootstrap) has been successfully deployed
+- The [bootstrap layer](https://github.com/NovaSoftworks/fndry-bootstrap) has been successfully deployed
 - The `nvcld-foundation-infra-sa` service account has been created with appropriate permissions and Workload Identity Federation granting access from this repository
 - `The backend.tf` file has been updated with the terraform state bucket created at bootstrap time
 
