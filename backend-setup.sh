@@ -4,7 +4,7 @@
 cat > backend.tf << EOF
 terraform {
   backend "gcs" {
-    bucket = "${TF_BACKEND_BUCKET}"
+    bucket = "$TF_BACKEND_BUCKET"
     prefix = "tfstate/foundation"
   }
 }
