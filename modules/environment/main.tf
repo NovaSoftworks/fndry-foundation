@@ -1,6 +1,6 @@
 resource "google_folder" "env_folder" {
-  parent              = var.parent
-  display_name        = "${var.name}"
+  parent              = var.parent_id
+  display_name        = var.short_name
   deletion_protection = false # TODO: remove after POC
 }
 

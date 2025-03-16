@@ -1,16 +1,21 @@
-variable "parent" {
-  type = string
-  description = "The parent folder or organization where the environment folder will be created."
+variable "billing_account_id" {
+  type        = string
+  description = "The alphanumerical ID of the billing account in Google Cloud to use for the environment."
 }
 
-variable "name" {
+variable "resources_prefix" {
   type        = string
-  description = "The full name of the environment (e.g. production)."
+  description = "The name to use as prefix in resources names (e.g. novacp)."
+}
+
+variable "parent_id" {
+  type        = string
+  description = "The ID of the parent folder or organization where the environment folder will be created 9 (e.g. folder/123456789)."
 }
 
 variable "short_name" {
   type        = string
-  description = "The short name of the environment (e.g. prd)."
+  description = "The 3 characters long name of the environment (e.g. prd)."
 
   validation {
     condition     = length(var.short_name) == 3

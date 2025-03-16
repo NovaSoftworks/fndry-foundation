@@ -12,16 +12,17 @@ locals {
   billing_account_id = data.google_billing_account.acct.id
 }
 
-resource "google_folder" "nvcld_folder" {
+resource "google_folder" "novacp_folder" {
   parent              = "organizations/${local.organization_id}"
-  display_name        = "novacloud"
+  display_name        = "novacp"
   deletion_protection = false # TODO: remove after POC
 }
 
 module "env_prd" {
   source = "./modules/environment"
 
-  parent = google_folder.nvcld_folder.id
-  name = "production"
-  short_name = "prd"
+  billing_account_id = local.billing_account_id
+  parent_id          = google_folder.novacp_folder.id
+  resources_prefix   = google_folder.novacp_folder.display_name
+  short_name         = "prd"
 }
