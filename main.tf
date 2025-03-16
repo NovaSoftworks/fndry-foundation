@@ -14,6 +14,14 @@ locals {
 
 resource "google_folder" "nvcld_folder" {
   parent              = "organizations/${local.organization_id}"
-  display_name        = "nvcld"
+  display_name        = "novacloud"
   deletion_protection = false # TODO: remove after POC
+}
+
+module "env_prd" {
+  source = "./modules/environment"
+
+  parent = google_folder.nvcld_folder.id
+  name = "production"
+  short_name = "prd"
 }
