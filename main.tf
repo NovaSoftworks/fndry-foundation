@@ -26,3 +26,12 @@ module "env_prd" {
   resources_prefix   = google_folder.novacp_folder.display_name
   short_name         = "prd"
 }
+
+module "env_prd_ew1_nat" {
+  source = "./modules/nat"
+
+  environment = "prd"
+  region = "europe-west1"
+  shared_vpc_host_project_id = module.env_prd.shared_vpc_host_project_id
+  shared_vpc_id = module.env_prd.shared_vpc_id
+}
