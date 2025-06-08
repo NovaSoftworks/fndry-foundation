@@ -48,3 +48,22 @@ resource "google_compute_network" "vpc" {
   auto_create_subnetworks = false
   depends_on              = [google_compute_shared_vpc_host_project.vpc_host]
 }
+
+# Firewall rules
+resource "google_compute_firewall" "allow_iap_ssh_ingress" {
+  name    = "allow-iap-ssh-ingress"
+  network = google_compute_network.vpc.name
+  project = google_project.shared_project.project_id
+
+  allow {
+    protocol = "tcp"
+    ports    = ["22"]
+  }
+
+  direction = "INGRESS"
+  priority  = 1000
+
+  source_ranges = ["35.235.240.0/20"]
+  target_tags   = ["allow-iap-ssh-ingress"]
+  description = "Allow IAP SSH connections to instances with the 'allow-iap-ssh' tag"
+}
