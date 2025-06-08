@@ -6,7 +6,7 @@ resource "google_folder" "env_folder" {
 
 resource "google_folder" "env_platforms_folder" {
   parent              = google_folder.env_folder.id
-  display_name        = "projects"
+  display_name        = "platforms"
   deletion_protection = false # TODO: remove after POC
 }
 
