@@ -27,11 +27,13 @@ module "env_prd" {
   short_name         = "prd"
 }
 
-module "env_prd_ew1_nat" {
-  source = "./modules/nat"
+module "prd_ew1" {
+  source = "./modules/region"
 
-  environment = "prd"
-  region = "europe-west1"
+  environment                = "prd"
+  region                     = "europe-west1"
   shared_vpc_host_project_id = module.env_prd.shared_vpc_host_project_id
-  shared_vpc_id = module.env_prd.shared_vpc_id
+  shared_vpc_id              = module.env_prd.shared_vpc_id
+  dmz_cidr                   = "10.0.0.0/29"
+  bastion_zone               = "b"
 }
