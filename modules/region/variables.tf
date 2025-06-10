@@ -21,12 +21,3 @@ variable "region" {
   type        = string
   description = "The unabbreviated region where the platform will be created (e.g. europe-west4)."
 }
-
-variable "dmz_cidr" {
-  type = string
-}
-
-variable "bastion_zone" {
-  type        = string
-  description = "The zone where the bastion host will be created (e.g. a)."
-}

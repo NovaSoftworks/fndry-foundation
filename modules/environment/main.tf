@@ -36,6 +36,14 @@ resource "google_project_service" "shared_project_compute_service" {
   disable_on_destroy = true # disable the service if this resource is destroyed, as it likely means a change in the overall bootstrapping logic
 }
 
+resource "google_project_service" "shared_project_container_service" {
+  depends_on = [ time_sleep.for_60s_after_shared_project ]
+  project    = google_project.shared_project.project_id
+  service    = "container.googleapis.com"
+
+  disable_on_destroy = true
+}
+
 resource "google_compute_shared_vpc_host_project" "vpc_host" {
   depends_on = [google_project_service.shared_project_compute_service]
 
