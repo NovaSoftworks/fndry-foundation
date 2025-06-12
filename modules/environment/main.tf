@@ -4,9 +4,9 @@ resource "google_folder" "env_folder" {
   deletion_protection = false # TODO: remove after POC
 }
 
-resource "google_folder" "env_platforms_folder" {
+resource "google_folder" "env_runtimes_folder" {
   parent              = google_folder.env_folder.id
-  display_name        = "platforms"
+  display_name        = "runtimes"
   deletion_protection = false # TODO: remove after POC
 }
 
