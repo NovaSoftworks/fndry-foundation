@@ -27,6 +27,7 @@ module "env_prd" {
   short_name         = "prd"
 }
 
+/*
 module "prd_ew1" {
   source = "./modules/region"
 
@@ -35,3 +36,4 @@ module "prd_ew1" {
   shared_vpc_host_project_id = module.env_prd.shared_vpc_host_project_id
   shared_vpc_id              = module.env_prd.shared_vpc_id
 }
+*/
